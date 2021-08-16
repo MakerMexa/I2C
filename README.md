@@ -1,29 +1,27 @@
 # I2C
-programation and control using I2C protocol with modules wemos d1 mini and pcf8574, testing with multiple sensors and leds sharing information
-with internet client
+programation and control using I2C protocol with modules wemos d1 mini and pcf8574, testing with multiple sensors and leds sharing information with internet client
 
 
       //DESCARGAR LIBRERÍA expansor i2c: https://github.com/ELECTROALL/LIBRERIAS/blob/master/PCF8574_library-master.rar
-// Importando librerías
-#include "Arduino.h"
-#include "PCF8574.h"
-#include "ESP8266WiFi.h"
-//#include "Wire.h"
+      // Importando librerías
+      #include "Arduino.h"
+      #include "PCF8574.h"
+      #include "ESP8266WiFi.h"
 
-// Reemplazar con la información de la red
-const char* ssid = "yourssidname";
-const char* password = "yourpassword";
+      // Reemplazar con la información de la red
+      const char* ssid = "yourssidname";
+      const char* password = "yourpassword";
 
-//sensor y pines de salida
-const uint8_t sensorpin1=P2;
-const int r1=P0;
-const int v1=P1;
-int valorsensor1;
+      //sensor y pines de salida
+      const uint8_t sensorpin1=P2;
+      const int r1=P0;
+      const int v1=P1;
+      int valorsensor1;
 
-const uint8_t sensorpin2=P3;
-const int r2=P2;
-const int v2=P3;
-int valorsensor2;
+      const uint8_t sensorpin2=P3;
+      const int r2=P2;
+      const int v2=P3;
+      int valorsensor2;
 
 const uint8_t sensorpin3=P4;
 const int r3=P4;
