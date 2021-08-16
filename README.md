@@ -1,5 +1,5 @@
 # I2C
-programation and control using I2C protocol with modules wemos d1 mini and pcf8574, testing with multiple sensors and leds sharing information with internet client
+programation and control using I2C protocol with modules wemos d1 mini and pcf8574, testing with multiple sensors and leds sharing information with internet client, how can improve brightness leds and options with this project
 
 
       // Importando librerías
