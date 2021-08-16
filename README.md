@@ -2,7 +2,8 @@
 programation and control using I2C protocol with modules wemos d1 mini and pcf8574, testing with multiple sensors and leds sharing information
 with internet client
 
-//DESCARGAR LIBRERÍA expansor i2c: https://github.com/ELECTROALL/LIBRERIAS/blob/master/PCF8574_library-master.rar
+
+      //DESCARGAR LIBRERÍA expansor i2c: https://github.com/ELECTROALL/LIBRERIAS/blob/master/PCF8574_library-master.rar
 // Importando librerías
 #include "Arduino.h"
 #include "PCF8574.h"
@@ -180,7 +181,6 @@ void loop(){
     // Boleano para localizar el fin de una solicitud http
     boolean blank_line = true;
     while (client.connected()) {
-      
       if (client.available()) {
         char c = client.read(); 
           }
