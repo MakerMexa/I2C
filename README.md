@@ -2,7 +2,6 @@
 programation and control using I2C protocol with modules wemos d1 mini and pcf8574, testing with multiple sensors and leds sharing information with internet client
 
 
-      //DESCARGAR LIBRERÍA expansor i2c: https://github.com/ELECTROALL/LIBRERIAS/blob/master/PCF8574_library-master.rar
       // Importando librerías
       #include "Arduino.h"
       #include "PCF8574.h"
@@ -23,53 +22,40 @@ programation and control using I2C protocol with modules wemos d1 mini and pcf85
       const int v2=P3;
       int valorsensor2;
 
-const uint8_t sensorpin3=P4;
-const int r3=P4;
-const int v3=P5;
-int valorsensor3;
+      const uint8_t sensorpin3=P4;
+      const int r3=P4;
+      const int v3=P5;
+      int valorsensor3;
+
+       WiFiServer server(80); //iniciando puerto de comunicacion wifi 
+
+      PCF8574 pcf8574(0x20);// dirección del dispositivo
+      PCF8574 pcf8574A (0x21);// dirección del dispositivo
 
 
-const uint8_t sensorpin4=P5;
-const int r4=P6;
-const int v4=P7;
-int valorsensor4;
-
-
-const uint8_t sensorpin5=P6;
-const int r5=P0;
-const int v5=P1;
-int valorsensor5;
-
-WiFiServer server(80); //iniciando puerto de comunicacion wifi 
-
-PCF8574 pcf8574(0x20);// dirección del dispositivo
-PCF8574 pcf8574A (0x21);// dirección del dispositivo
-//int led=13;
-
-void setup(){
-  //inicialiacion de modulos I2C 
-  pcf8574.begin();// inicia la comunicación entre el uc y el CI PCF8574
-  pcf8574A.begin();// inicia la comunicación entre el uc y el CI PCF8574
+      void setup(){
+      //inicialiacion de modulos I2C 
+      pcf8574.begin();// inicia la comunicación entre el uc y el CI PCF8574
+      pcf8574A.begin();// inicia la comunicación entre el uc y el CI PCF8574
   
-
-  pcf8574.pinMode(P0, OUTPUT); //se declará el pin PO del CI PCF8574 como SALIDA
-  pcf8574.pinMode(P1, OUTPUT); //se declará el pin P1 del CI PCF8574 como SALIDA 
-  pcf8574.pinMode(P2, OUTPUT); //se declará el pin P2 del CI PCF8574 como SALIDA 
-  pcf8574.pinMode(P3, OUTPUT); //se declará el pin P3 del CI PCF8574 como SALIDA 
-  pcf8574.pinMode(P4, OUTPUT); //se declará el pin P4 del CI PCF8574 como SALIDA 
-  pcf8574.pinMode(P5, OUTPUT); //se declará el pin P5 del CI PCF8574 como SALIDA 
-  pcf8574.pinMode(P6, OUTPUT); //se declará el pin P6 del CI PCF8574 como SALIDA 
-  pcf8574.pinMode(P7, OUTPUT); //se declará el pin P7 del CI PCF8574 como SALIDA 
+      pcf8574.pinMode(P0, OUTPUT); //se declará el pin PO del CI PCF8574 como SALIDA
+      pcf8574.pinMode(P1, OUTPUT); //se declará el pin P1 del CI PCF8574 como SALIDA 
+      pcf8574.pinMode(P2, OUTPUT); //se declará el pin P2 del CI PCF8574 como SALIDA 
+      pcf8574.pinMode(P3, OUTPUT); //se declará el pin P3 del CI PCF8574 como SALIDA 
+      pcf8574.pinMode(P4, OUTPUT); //se declará el pin P4 del CI PCF8574 como SALIDA 
+      pcf8574.pinMode(P5, OUTPUT); //se declará el pin P5 del CI PCF8574 como SALIDA 
+      pcf8574.pinMode(P6, OUTPUT); //se declará el pin P6 del CI PCF8574 como SALIDA 
+      pcf8574.pinMode(P7, OUTPUT); //se declará el pin P7 del CI PCF8574 como SALIDA 
   
   
-  pcf8574A.pinMode(P0, OUTPUT); //se declará el pin PO del CI PCF8574 como SALIDA 
-  pcf8574A.pinMode(P1, OUTPUT); //se declará el pin P1 del CI PCF8574 como SALIDA 
-  pcf8574A.pinMode(P2, INPUT); //se declará el pin P2 del CI PCF8574 como entrada 
-  pcf8574A.pinMode(P3, INPUT); //se declará el pin P3 del CI PCF8574 como entrada 
-  pcf8574A.pinMode(P4, INPUT); //se declará el pin P4 del CI PCF8574 como entrada 
-  pcf8574A.pinMode(P5, INPUT); //se declará el pin P5 del CI PCF8574 como entrada 
-  pcf8574A.pinMode(P6, INPUT); //se declará el pin P6 del CI PCF8574 como entrada 
-  pcf8574A.pinMode(P7, INPUT); //se declará el pin P7 del CI PCF8574 como entrada
+      pcf8574A.pinMode(P0, OUTPUT); //se declará el pin PO del CI PCF8574 como SALIDA 
+      pcf8574A.pinMode(P1, OUTPUT); //se declará el pin P1 del CI PCF8574 como SALIDA 
+      pcf8574A.pinMode(P2, INPUT); //se declará el pin P2 del CI PCF8574 como entrada 
+      pcf8574A.pinMode(P3, INPUT); //se declará el pin P3 del CI PCF8574 como entrada 
+      pcf8574A.pinMode(P4, INPUT); //se declará el pin P4 del CI PCF8574 como entrada 
+      pcf8574A.pinMode(P5, INPUT); //se declará el pin P5 del CI PCF8574 como entrada 
+      pcf8574A.pinMode(P6, INPUT); //se declará el pin P6 del CI PCF8574 como entrada 
+      pcf8574A.pinMode(P7, INPUT); //se declará el pin P7 del CI PCF8574 como entrada
 
   // Iniciando y configurando velocidad del Puerto Serial
   Serial.begin(115200);
