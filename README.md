@@ -14,7 +14,6 @@ const char* ssid = "yourssidname";
 const char* password = "yourpassword";
 
 //sensor y pines de salida
-//baño1
 const uint8_t sensorpin1=P2;
 const int rojo1=P0;
 const int verde1=P1;
