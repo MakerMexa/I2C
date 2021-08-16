@@ -57,110 +57,110 @@ programation and control using I2C protocol with modules wemos d1 mini and pcf85
       pcf8574A.pinMode(P6, INPUT); //se declará el pin P6 del CI PCF8574 como entrada 
       pcf8574A.pinMode(P7, INPUT); //se declará el pin P7 del CI PCF8574 como entrada
 
-  // Iniciando y configurando velocidad del Puerto Serial
-  Serial.begin(115200);
-  delay(10);
+      // Iniciando y configurando velocidad del Puerto Serial
+      Serial.begin(115200);
+      delay(10);
 
-  // Conectando a la red WiFi
-  Serial.println();
-  Serial.print("Conectando a ");
-  Serial.println(ssid);
+      // Conectando a la red WiFi
+      Serial.println();
+      Serial.print("Conectando a ");
+      Serial.println(ssid);
 
-  WiFi.begin(ssid, password);
+      WiFi.begin(ssid, password);
 
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println("");
-  Serial.println("WiFi conectado");
+      while (WiFi.status() != WL_CONNECTED) {
+      delay(500);
+      Serial.print(".");
+       }
+      Serial.println("");
+      Serial.println("WiFi conectado");
 
-  // Starting the web server
-  server.begin();
-  Serial.println("Web server ejecutándose. Esperando a la ESP IP...");
-  delay(10000);
+      // Starting the web server
+      server.begin();
+      Serial.println("Web server ejecutándose. Esperando a la ESP IP...");
+      delay(10000);
 
-  // Mostrar la dirección ESP IP en el Monitor Serie
-  Serial.println(WiFi.localIP());
-}
+      // Mostrar la dirección ESP IP en el Monitor Serie
+      Serial.println(WiFi.localIP());
+      }
 
-void loop(){
+      void loop(){
  
-  uint8_t valorsensor1 = pcf8574A.digitalRead(sensorpin1);            // Lee el valor del pin P3 SENSOR 
- //condicion de control de leds
- if( valorsensor1 > 0)
- {
-   pcf8574.digitalWrite(v1, LOW);
-   pcf8574.digitalWrite(r1, HIGH);  
-  }
- else 
- {
-   pcf8574.digitalWrite(v1, HIGH);
-   pcf8574.digitalWrite(r1, LOW); 
-  }
-  delay(1);
+      uint8_t valorsensor1 = pcf8574A.digitalRead(sensorpin1);            // Lee el valor del pin P3 SENSOR 
+      //condicion de control de leds
+      if( valorsensor1 > 0)
+      {
+      pcf8574.digitalWrite(v1, LOW);
+      pcf8574.digitalWrite(r1, HIGH);  
+      }
+      else 
+       {
+        pcf8574.digitalWrite(v1, HIGH);
+        pcf8574.digitalWrite(r1, LOW); 
+       }
+        delay(1);
   
-   uint8_t valorsensor2 = pcf8574A.digitalRead(sensorpin2);            // Lee el valor del pin P4 SENSOR 
- //condicion de control de leds 
- if(valorsensor2 > 0)
- { 
-   pcf8574.digitalWrite(r2, HIGH);
-   pcf8574.digitalWrite(v2, LOW);
-  }
- else 
- { 
-   pcf8574.digitalWrite(r2, LOW);
-   pcf8574.digitalWrite(v2, HIGH);
-  }
-  delay(100);
+       uint8_t valorsensor2 = pcf8574A.digitalRead(sensorpin2);            // Lee el valor del pin P4 SENSOR 
+       //condicion de control de leds 
+       if(valorsensor2 > 0)
+       { 
+         pcf8574.digitalWrite(r2, HIGH);
+         pcf8574.digitalWrite(v2, LOW);
+       }
+       else 
+       { 
+         pcf8574.digitalWrite(r2, LOW);
+         pcf8574.digitalWrite(v2, HIGH);
+        }
+       delay(100);
  
-  uint8_t valorsensor3 = pcf8574A.digitalRead(sensorpin3);             // Lee el valor del pin P5 SENSOR 
- //condicion de control de leds 
- if(valorsensor3 > 0)
- {
-   pcf8574.digitalWrite(r3, HIGH);
-   pcf8574.digitalWrite(v3, LOW);
-  }
- else 
- {
-   pcf8574.digitalWrite(v3, HIGH);
-   pcf8574.digitalWrite(r3, LOW);
-  }
-  delay(100);
-  
+       uint8_t valorsensor3 = pcf8574A.digitalRead(sensorpin3);             // Lee el valor del pin P5 SENSOR 
+       //condicion de control de leds 
+       if(valorsensor3 > 0)
+       {
+         pcf8574.digitalWrite(r3, HIGH);
+         pcf8574.digitalWrite(v3, LOW);
+       }
+       else 
+       {
+         pcf8574.digitalWrite(v3, HIGH);
+         pcf8574.digitalWrite(r3, LOW);
+       }
+         delay(100);
+   
  
-  uint8_t valorsensor4 = pcf8574A.digitalRead(sensorpin4);             // Lee el valor del pin P6 SENSOR 
- //condicion de control de leds 
- if(valorsensor4 > 0)
- {
-   pcf8574.digitalWrite(r4, HIGH);
-   pcf8574.digitalWrite(v4, LOW);  
-  }
- else 
- {
-   pcf8574.digitalWrite(v4, HIGH);
-   pcf8574.digitalWrite(r4, LOW); 
-  }
-  delay(100);
+       uint8_t valorsensor4 = pcf8574A.digitalRead(sensorpin4);             // Lee el valor del pin P6 SENSOR 
+       //condicion de control de leds 
+       if(valorsensor4 > 0)
+       {
+         pcf8574.digitalWrite(r4, HIGH);
+         pcf8574.digitalWrite(v4, LOW);  
+       }
+       else 
+       {
+         pcf8574.digitalWrite(v4, HIGH);
+         pcf8574.digitalWrite(r4, LOW); 
+        }
+          delay(100);
   
-  uint8_t valorsensor5 = pcf8574A.digitalRead(sensorpin5);           // Lee el valor del pin P2 SENSOr
-  //condicion de control de leds 
- if(valorsensor5 > 0)
- {
-   pcf8574A.digitalWrite(r5, HIGH);
-   pcf8574A.digitalWrite(v5, LOW);
-  }
- else 
- { 
-   pcf8574A.digitalWrite(v5, HIGH);
-   pcf8574A.digitalWrite(r5, LOW);
-  }                
-  delay(100);// Tiempo para que la comunicación se establezca con normalidad
+     uint8_t valorsensor5 = pcf8574A.digitalRead(sensorpin5);           // Lee el valor del pin P2 SENSOr
+     //condicion de control de leds 
+    if(valorsensor5 > 0)
+    {
+      pcf8574A.digitalWrite(r5, HIGH);
+      pcf8574A.digitalWrite(v5, LOW);
+    }
+    else 
+    { 
+      pcf8574A.digitalWrite(v5, HIGH);
+      pcf8574A.digitalWrite(r5, LOW);
+    }                
+      delay(100);// Tiempo para que la comunicación se establezca con normalidad
 
 
-  // Esperando nuevas conexiones 
-  WiFiClient client = server.available();
-  if (client) {
+    // Esperando nuevas conexiones 
+     WiFiClient client = server.available();
+    if (client) {
     Serial.println("Nuevo cliente");
     // Boleano para localizar el fin de una solicitud http
     boolean blank_line = true;
@@ -234,10 +234,11 @@ void loop(){
                    client.print("<meta http-equiv=\"refresh\" content=\"1\">");  //Actualización de la página cada segundo
                    client.println("</html>");
                    break;
-    }       
-  //Cerrando la conexión con el cliente
-  delay(1);
-  client.stop();
-  Serial.println("Client disconnected.");
-    }
-    }
+             }       
+      //Cerrando la conexión con el cliente
+      delay(1);
+      client.stop();
+      Serial.println("Client disconnected.");
+       }
+      }
+ 
