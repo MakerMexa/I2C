@@ -15,30 +15,30 @@ const char* password = "yourpassword";
 
 //sensor y pines de salida
 const uint8_t sensorpin1=P2;
-const int rojo1=P0;
-const int verde1=P1;
+const int r1=P0;
+const int v1=P1;
 int valorsensor1;
 
 const uint8_t sensorpin2=P3;
-const int rojo2=P2;
-const int verde2=P3;
+const int r2=P2;
+const int v2=P3;
 int valorsensor2;
 
 const uint8_t sensorpin3=P4;
-const int rojo3=P4;
-const int verde3=P5;
+const int r3=P4;
+const int v3=P5;
 int valorsensor3;
 
 
 const uint8_t sensorpin4=P5;
-const int rojo4=P6;
-const int verde4=P7;
+const int r4=P6;
+const int v4=P7;
 int valorsensor4;
 
 
 const uint8_t sensorpin5=P6;
-const int rojo5=P0;
-const int verde5=P1;
+const int r5=P0;
+const int v5=P1;
 int valorsensor5;
 
 WiFiServer server(80); //iniciando puerto de comunicacion wifi 
@@ -101,74 +101,74 @@ void setup(){
 
 void loop(){
  
-  uint8_t valorsensor1 = pcf8574A.digitalRead(sensorpin1);            // Lee el valor del pin P3 SENSOR BAÑO1
+  uint8_t valorsensor1 = pcf8574A.digitalRead(sensorpin1);            // Lee el valor del pin P3 SENSOR 
  //condicion de control de leds
  if( valorsensor1 > 0)
  {
-   pcf8574.digitalWrite(verde1, LOW);
-   pcf8574.digitalWrite(rojo1, HIGH);  
+   pcf8574.digitalWrite(v1, LOW);
+   pcf8574.digitalWrite(r1, HIGH);  
   }
  else 
  {
-   pcf8574.digitalWrite(verde1, HIGH);
-   pcf8574.digitalWrite(rojo1, LOW); 
+   pcf8574.digitalWrite(v1, HIGH);
+   pcf8574.digitalWrite(r1, LOW); 
   }
   delay(1);
   
-   uint8_t valorsensor2 = pcf8574A.digitalRead(sensorpin2);            // Lee el valor del pin P4 SENSOR BAÑO2
+   uint8_t valorsensor2 = pcf8574A.digitalRead(sensorpin2);            // Lee el valor del pin P4 SENSOR 
  //condicion de control de leds 
  if(valorsensor2 > 0)
  { 
-   pcf8574.digitalWrite(rojo2, HIGH);
-   pcf8574.digitalWrite(verde2, LOW);
+   pcf8574.digitalWrite(r2, HIGH);
+   pcf8574.digitalWrite(v2, LOW);
   }
  else 
  { 
-   pcf8574.digitalWrite(rojo2, LOW);
-   pcf8574.digitalWrite(verde2, HIGH);
+   pcf8574.digitalWrite(r2, LOW);
+   pcf8574.digitalWrite(v2, HIGH);
   }
   delay(100);
  
-  uint8_t valorsensor3 = pcf8574A.digitalRead(sensorpin3);             // Lee el valor del pin P5 SENSOR BAÑO3
+  uint8_t valorsensor3 = pcf8574A.digitalRead(sensorpin3);             // Lee el valor del pin P5 SENSOR 
  //condicion de control de leds 
  if(valorsensor3 > 0)
  {
-   pcf8574.digitalWrite(rojo3, HIGH);
-   pcf8574.digitalWrite(verde3, LOW);
+   pcf8574.digitalWrite(r3, HIGH);
+   pcf8574.digitalWrite(v3, LOW);
   }
  else 
  {
-   pcf8574.digitalWrite(verde3, HIGH);
-   pcf8574.digitalWrite(rojo3, LOW);
+   pcf8574.digitalWrite(v3, HIGH);
+   pcf8574.digitalWrite(r3, LOW);
   }
   delay(100);
   
  
-  uint8_t valorsensor4 = pcf8574A.digitalRead(sensorpin4);             // Lee el valor del pin P6 SENSOR BAÑO4
+  uint8_t valorsensor4 = pcf8574A.digitalRead(sensorpin4);             // Lee el valor del pin P6 SENSOR 
  //condicion de control de leds 
  if(valorsensor4 > 0)
  {
-   pcf8574.digitalWrite(rojo4, HIGH);
-   pcf8574.digitalWrite(verde4, LOW);  
+   pcf8574.digitalWrite(r4, HIGH);
+   pcf8574.digitalWrite(v4, LOW);  
   }
  else 
  {
-   pcf8574.digitalWrite(verde4, HIGH);
-   pcf8574.digitalWrite(rojo4, LOW); 
+   pcf8574.digitalWrite(v4, HIGH);
+   pcf8574.digitalWrite(r4, LOW); 
   }
   delay(100);
   
-  uint8_t valorsensor5 = pcf8574A.digitalRead(sensorpin5);           // Lee el valor del pin P2 SENSOR BAÑO5
+  uint8_t valorsensor5 = pcf8574A.digitalRead(sensorpin5);           // Lee el valor del pin P2 SENSOr
   //condicion de control de leds 
  if(valorsensor5 > 0)
  {
-   pcf8574A.digitalWrite(rojo5, HIGH);
-   pcf8574A.digitalWrite(verde5, LOW);
+   pcf8574A.digitalWrite(r5, HIGH);
+   pcf8574A.digitalWrite(v5, LOW);
   }
  else 
  { 
-   pcf8574A.digitalWrite(verde5, HIGH);
-   pcf8574A.digitalWrite(rojo5, LOW);
+   pcf8574A.digitalWrite(v5, HIGH);
+   pcf8574A.digitalWrite(r5, LOW);
   }                
   delay(100);// Tiempo para que la comunicación se establezca con normalidad
 
@@ -192,57 +192,57 @@ void loop(){
           // Código para mostrar estado de puertas en la página
           client.println("<!DOCTYPE HTML>");
           client.println("<html>");
-          client.println("<head></head><body><h1>Monitoreo Remoto de Estado</h1><h3>Sanitario 1:");
-          //BAÑO1  
+          client.println("<head></head><body><h1>Monitoreo Remoto de Estado</h1><h3>1:");
+           
            if(valorsensor1 > 0)
              {
-               client.println("ocupado");
+               client.println("o");
              }
                else{
-                client.println("libre");
+                client.println("l");
                    }
                   delay(500);
-         //BAÑO2
-          client.println("</h3><h3>sanitario 2: ");
+        
+          client.println("</h3><h3>2: ");
           if(valorsensor2 > 0)
             {
-              client.println("ocupado");
+              client.println("o");
             }
              else{
-              client.println("libre");
+              client.println("l");
                  }
                 delay(500);
-         //BAÑO3
-          client.println("</h3><h3>Sanitario 3: ");
+        
+          client.println("</h3><h3>3: ");
          // client.println(valorsensor3)
          if(valorsensor3 > 0)
             {
-              client.println("ocupado");
+              client.println("o");
             }
              else{
-              client.println("libre");
+              client.println("l");
                  }
                 delay(500);       
-         //BAÑO4
-          client.println("</h3><h3>Sanitario 4: ");
+         
+          client.println("</h3><h3>4: ");
          // client.println(valorsensor3)
          if(valorsensor4 > 0)
             {
-              client.println("ocupado");
+              client.println("o");
             }
              else{
-              client.println("libre");
+              client.println("l");
                  }
                 delay(500);
          
-          client.println("</h3><h3>Sanitario 5: ");
+          client.println("</h3><h3>5: ");
          // client.println(valorsensor3)
          if(valorsensor5 > 0)
             {
-              client.println("ocupado");
+              client.println("o");
             }
              else{
-              client.println("libre");
+              client.println("l");
                  }
                 delay(500);
                    client.println("</h3><h3>");
