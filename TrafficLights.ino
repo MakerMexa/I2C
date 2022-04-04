@@ -1,5 +1,5 @@
 //by : J.L.L.
-
+//licensed GPL-3.0
 // Importando librerías del ESP8266
 #include <Arduino.h>
 #include <PCF8574.h>
